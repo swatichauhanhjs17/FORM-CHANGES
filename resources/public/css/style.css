@@ -1,0 +1,94 @@
+.wrap{
+
+  position: fixed;
+  z-index: 9999;
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+}
+.meta li{
+  display: inline;
+  margin-left: 0;
+  margin-right: 30px;
+}
+.textset{
+  color: white;
+  text-align: center;
+  font-family: MV Boli ;
+  position: absolute;
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+
+}
+p{
+  padding-top:15px;
+}
+.textready{
+  margin-top: 230px;
+  margin-left: 40px;
+  font-size: 60px;
+  color: white;
+}
+.hero-unit{
+  margin-left: 0;
+  margin-right: 0;
+  background-image: url('asv.jpg');
+  background-attachment: fixed;
+  height: 100%;
+  position: relative;
+}
+.meta a{
+  text-decoration: none;
+  color: white;
+  letter-spacing: 1px;
+}
+nav li{
+
+  font-size: 12px;
+  margin-left: 0;
+}
+.cde{
+  padding-top: 10px;
+  font-size: 30px;
+  margin-bottom: 0;
+  font-family: MV Boli;
+  color: white;
+  text-decoration: none;
+
+}
+
+.meta1{
+  text-decoration: none;
+  text-align: left;
+  font-size: 14px;
+  color: rgb(146,43,33);
+  font-family: MV Boli;
+}
+.foottext{
+  font-family: MV Boli;
+  color: black;
+}
+.wrap1 h4{
+  padding: 20px;
+}
+h3{
+  color: rgb(52,152,219);
+  text-align: center;
+}
+.foot{
+  background-color: darkgrey;
+  height: 15%;
+  opacity: 0.5;
+}
+.foot ul{
+  text-align: center;
+}
+ul li{
+  display: inline;
+}
+a{
+  text-decoration: none;
+  color: black;
+}

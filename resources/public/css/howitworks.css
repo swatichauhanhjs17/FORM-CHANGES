@@ -1,0 +1,122 @@
+.wrap{
+  /*background: URL(image4.jpg);*/
+
+  position: relative;
+}
+.wr{
+  overflow: hidden;
+  z-index: 9999;
+  text-align: left;;
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  position: fixed;
+}
+ul li{
+  display: inline;
+  margin-left: 0;
+  margin-right: 30px;
+}
+a{
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: white;
+}
+.head{
+  text-align: center;
+  font-family: MV Boli;
+}
+.cde{
+  font-size: 30px;
+  margin-bottom: 0;
+  font-family: MV Boli;
+
+}
+nav li{
+  margin-bottom: 0;
+  font-size: 12px;
+  margin-left: 0;
+}
+.set1{
+  text-align: center;
+  padding: 15px;
+  position: absolute;
+  position: relative;
+}
+.set{
+  margin-top: 30px;
+  margin-left: 100px;
+  font-size: 40px;
+  font-family: MV Boli;
+
+}
+.wrap1{
+  position: absolute;
+  position: relative;
+  margin-top: 20px;
+  margin-left: 100px;
+  font-size: 25px;
+}
+.wrap2{
+  position: absolute;
+  position: relative;
+  margin-top: 150px;
+  margin-left: 100px;
+  font-size: 25px;
+}
+.link{
+  color: red;
+  font-size: 18px;
+}
+.wrap3{
+  position: absolute;
+  position: relative;
+  margin-top: 50px;
+  margin-left: 300px;
+}
+.wrap4{
+  position: absolute;
+  position: relative;
+  font-size: 25px;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+.wrap5{
+  position: absolute;
+  position: relative;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+.wrap6{
+  position: absolute;
+  position: relative;
+  font-size: 18px;
+  margin-top: 50px;
+  margin-left: 300px;
+}
+.wrap7{
+  position: absolute;
+  position: relative;
+  margin-top: 70px;
+  margin-left: 280px;
+}
+.wrap8{
+  position: absolute;
+  position: relative;
+  font-size: 25px;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+.wrap9{
+position: absolute;
+position: relative;
+font-size: 18px;
+margin-top: 30px;
+margin-left: 150px;
+}
+.wrap10{
+position: absolute;
+margin-top: 60px;
+margin-left: 300px;
+}

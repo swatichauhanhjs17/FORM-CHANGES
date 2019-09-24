@@ -1,0 +1,365 @@
+(def a(atom nil))
+(reset!  a { })
+ (swap! a assoc :key1 "value1")
+ (swap! a assoc :key2 12)
+ (swap! a assoc :mainkey {:subkey 1 :subkey2 2})
+ (swap! a assoc-in [:mainkey :subkey3 ]3)
+(swap! a assoc-in [:mainkey :subkey3 ] 30) 
+(swap! a update dissoc[:mainkey :subkey3])
+(swap! a update dissoc[:mainkey :subkey3] 30)
+(swap! a update dissoc[:mainkey :subkey3] )
+(swap!  update-in a [:mainkey] dissoc :subkey3
+))
+(swap!  update-in a [:mainkey] dissoc :subkey3)
+(swap! a  update-in  [:mainkey] dissoc :subkey3)
+(defn lister [items]
+  [:ul
+   (for [item items]
+     ^{:key item} [:li "Item " item])])
+(defn lister-user []
+  [:div
+   "Here is a list:"
+   [lister (range 3)]])
+@lister-user
+lister-user
+(lister 3)
+(get @list-user)
+(get @lister-user)
+(get @list-user 0)
+(nth '@lister-user 0)
+(nth '(lister user) 0)
+(nth '(lister- user) 0)
+ (def save (r/atom {}))
+ (def save (r/atom nil))
+      (reset! save {}) (def save (r/atom nil))
+      (reset! save {}) (def save (atom nil))
+(def save (r/atom nil))
+(def save (atom nil))
+      (reset! save {})
+(def sae (atom {}))
+sae
+@sae
+(defn newm{:ku "lo" :lop "jk"})
+(def newm{:ku "lo" :lop "jk"})
+newm
+(def fio(atom newm))
+fio
+@fio
+(def 'card)
+(def a(atom nil))
+a
+@a
+(def a)
+(for [item [0 [0 1 2] "string-value" :keyword {:key "value"}]] (println item))
+(for [item [0 [0 1 2] "string-value" :keyword {:key "value"}]] (println item) item)
+(for [item [0 [0 1 2] "string-value" :keyword {:key "value"}]](do (println item)item))
+(for [item [0 [0 1 2] "string-value" :keyword {:key "value"}]] item)
+(for [item ] item)
+(def exercise(atom nil )
+)
+(def exercise(atom nil ))
+@exercise
+(reset! a {})
+(reset! exercise {})
+(swap! exercise assoc :chapter1 "clojure")
+(swap! exercise assoc :chapter2 [])
+(swap! exercise update :chapter2 (conj 7))
+(swap! exercise update :chapter2 (conj )7)
+(swap! exercise update :chapter2 [7] conj )
+(swap! update  exercise :chapter[7] conj )
+(swap! exercise update :chapter [7] conj )
+(swap! exercise update (conj :chapter2 7) )
+(swap! exercise update conj :chapter2 7 )
+@exercise
+(swap! exercise update :chapter2 7  conj)
+(swap! exercise update conj :chapter2 [ 7]] )
+(swap! exercise update conj :chapter2 [ 7] )
+(def a(atom nil))
+(reset! a {})
+(swap! a assoc :chapter1 "clojure")
+(swap! a assoc :chapter2 [])
+(swap! a update conj :chapter2 [ 7] )
+(swap! a update (conj :chapter2 [ 7]) )
+(swap! a update  :chapter2 [ 7] )
+(swap!  update a :chapter2 [ 7] )
+(swap!  update a :chapter2 7 )
+(swap! a  update  :chapter2 7 )
+(swap! a  update :chapter2 conj[ 7] )
+(swap! a  update :chapter2 conj 7 )
+  (def exercise(atom nil ))
+ (reset! exercise {})
+(swap! exercise assoc :chapter1 "clojure")
+ (swap! exercise assoc :chapter2 [])
+ (swap! exercise update :chapter2 conj 2)
+ (swap! exercise assoc :chapter3 {:key1 1 :key2 2  })
+(swap! exercise assoc-in [:chapter3 :key3] [3 "hello" :kello 9])
+(swap! exercise update-in [:chapter3 :key3] conj 9)
+(swap! exercise update-in [:chapter3 :key3] conj exercise)
+(def (atom exercise))
+(def a (atom exercise))
+(swap! exercise update-in [:chapter3 :key3] conj a)
+(def a(atom nil))
+(reset!  a { })
+ (swap! a assoc :key1 "value1")
+ (swap! a assoc :key2 12)
+ (swap! a assoc :mainkey {:subkey 1 :subkey2 2})
+(swap! a  update-in  [:mainkey] dissoc :subkey3)
+ (swap! a assoc-in [:mainkey :subkey3 ]3)
+(swap! a update dissoc[:mainkey :subkey3] 30)
+(swap! a assoc-in [:mainkey :subkey3 ] 30) 
+(swap! a assoc-in [:mainkey :subkey4 ] 30) 
+(swap! a assoc-in [:mainkey :subkey5 ] 70) 
+(swap! a assoc-in [:mainkey :subkey8 ] 980) 
+(swap! a assoc-in [:mainkey :subkey9 ] 680) 
+(swap! a assoc-in [:mainkey :subkey10 ] 678) 
+(swap! a assoc-in [:mainkey :subkey11 ] 98987) 
+(swap! a assoc-in [:mainkey :subkey16 ] 234) 
+(swap! a assoc-in [:mainkey :subkey18 ] 134) 
+(swap! a assoc-in [:mainkey :subkey20 ] 632) 
+(swap! a assoc-in [:mainkey :subkey21 ] 564) 
+(swap! a assoc-in [:mainkey :subkey22 ] 23) 
+(swap! a assoc-in [:mainkey :subkey67 ] 89) 
+(swap! a assoc-in [:mainkey :subkey69 ] 69) 
+(swap! a assoc-in [:mainkey :subkey78 ] 69) 
+(swap! a assoc-in [:mainkey :subkey45 ]43 ) 
+(swap! a assoc-in [:mainkey :subkey76 ]21 ) 
+(swap! a assoc-in [:mainkey :subkey87 ]234 ) 
+(swap! a assoc-in [:mainkey :subkey34 ]76 ) 
+(swap! a assoc-in [:mainkey :subkey86 ]43 ) 
+(swap! a assoc-in [:mainkey :subkey543 ]431 ) 
+(swap! a assoc-in [:mainkey :subkey876 ]12345 ) 
+(swap! a assoc-in [:mainkey :subkey678 ]8765 ) 
+(swap! a assoc-in [:mainkey :subkey678 ]98 ) 
+(swap! a assoc-in [:mainkey :subkey12 ]12 ) 
+(swap! a assoc-in [:mainkey :subkey412 ]1423 ) 
+(swap! a assoc-in [:mainkey :subkey72 ]123 ) 
+(swap! a assoc-in [:mainkey :subkey123 ]123 ) 
+(swap! a assoc-in [:mainkey :subkey876 ]3 ) 
+(swap! a assoc-in [:mainkey :subkey6 ]3 ) 
+(swap! a assoc-in [:mainkey :subkey9787 ]3 ) 
+(swap! a assoc-in [:mainkey :subkey0 ]3 ) 
+(swap! a update-in [:chapter3 :key3] subvec 0 3)
+(swap! a update-in [:mainkey :subkey3] subvec 1 9)
+(swap! a update-in [:chapter3 :subkey543] subvec 0 3)
+(swap! a update-in [:mainkey ] subvec 0 3)
+(swap! a update-in [:mainkey :subkey543] subvec 1 9)
+ (swap! a assoc-in [:mainkey :subkey3 ]3)
+(swap! a update-in [:chapter3 :subkey543] subvec 0 3)
+(swap! a assoc-in [:mainkey :subkey22 ] 23) 
+(swap! a assoc-in [:mainkey :subkey22 ] 99999) 
+(swap! a assoc-in [:mainkey :subkey22 ]9)
+(swap! a assoc-in [:mainkey ] subvec 0 9)
+(swap! a assoc-in [:mainkey ] subvec 5 )
+(swap! a assoc-in [:mainkey ] subvec 8 )
+(swap! a assoc-in [:mainkey :subkey11 ]7) 
+(swap! a assoc-in [:mainkey :subkey34 ]7) 
+(swap! a assoc-in [:mainkey :subkey543 ]7) 
+(swap! a assoc-in [:mainkey :subkey ]7) 
+(swap! a assoc-in [:mainkey :subkey45 ]7) 
+(swap! a assoc-in [:mainkey :subkey678 ]7) 
+(swap! a assoc-in [:mainkey :subkey16 ]7) 
+(swap! a assoc-in [:mainkey :subkey69 ]7) 
+(swap! a assoc-in [:mainkey :subkey9 ]7) 
+(swap! a assoc-in [:mainkey :subkey21 ]7) 
+(swap! a assoc-in [:mainkey :subkey67 ]7) 
+(swap! a assoc-in [:mainkey :subkey876 ]7) 
+(swap! a assoc-in [:mainkey :subkey10 ]7) 
+(swap! a assoc-in [:mainkey :subkey0 ]7) 
+(swap! a assoc-in [:mainkey :subkey76 ]7) 
+(swap! a assoc-in [:mainkey :subkey20 ]7) 
+(swap! a assoc-in [:mainkey :subkey5 ]7) 
+(swap! a assoc-in [:mainkey :subkey6 ]7) 
+(swap! a assoc-in [:mainkey :subkey18 ]7) 
+(swap! a assoc-in [:mainkey :subkey22 ]7) 
+(swap! a assoc-in [:mainkey :subkey78 ]7) 
+(swap! a assoc-in [:mainkey :subkey9787 ]7) 
+(swap! a assoc-in [:mainkey :subkey412 ]7) 
+(swap! a assoc-in [:mainkey :subkey2 ]7) 
+(swap! a assoc-in [:mainkey :subkey87 ]7) 
+(swap! a assoc-in [:mainkey :subkey3 ]7) 
+lein figwheel
+ (let  [items (atom [])])
+(conj  items 7)
+ (let  [items (atom [])] (conj  items 7))
+ (def  [items (atom [])] (conj  items 7))
+ (def  [items (atom [])] )
+ (def  items [] )
+(conj  items 7)
+(conj  items 87)
+@item
+@items
+items
+(let element [])
+(let [ element ( r/atom [])])
+(let [ element ( atom [])])
+(let [ final ( atom {:Name swati :key 2} )])
+(let [ final ( atom {:Name "swati" :key 2} )])
+@final
+final
+(let [ final ( atom {:Name "swati" :key 2} )]
+@final))
+(let [ final ( atom {:Name "swati" :key 2} )]
+@final)
+(let [ final ( atom {:Name "swati" :key 2} )]
+(conj element final)
+)
+(let [ final ( atom {:Name "swati" :key 2} )]
+(get final))
+(let [ final ( atom {:Name "swati" :key 2} )]
+get final)
+(let [ final ( atom {:Name "swati" :key 2} )]
+get @final)
+(let [ final ( atom {:Name "swati" :key 2} )]
+get @final
+(let [ element ( atom [])]
+conj element get @final))
+(let [ final ( atom {:Name "swati" :key 2} )]
+(let [ element ( atom [])]
+conj element get @final
+@elements))
+(let [ final ( atom {:Name "swati" :key 2} )]
+(let [ element ( atom [])]
+conj element get @final
+@element))
+(let [ final ( atom {:Name "swati" :key 2} )]
+(let [ element ( atom [])]
+conj element 7
+@element))
+(assoc {:name "re-frame"} :result [{:identity "some name" :country "some value"}])
+(update {:name "re-frame", :result [{:identity "some name", :country "some value"}]}} conj {:identity "some other name " :country "other country"})
+(update {:name "re-frame", :result [{:identity "some name", :country "some value"}]} conj {:identity "some other name " :country "other country"})
+(swap!  {:name "re-frame", :result [{:identity "some name", :country "some value"}]} update  :result conj {:identity "some other name " :country "other country"})
+(update {:name "re-frame", :result [{:identity "some name", :country "some value"}]} :result conj {:identity "some other name " :country "other country"})
+(let [step1 {}
+      step2 (assoc step1 :key1 "value1")]
+  step2)
+(let [result (or original-result [])])
+(let [step1 {}])
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  ] step3)
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  ] step4(assoc-in step3 [:key2 ] :another-key3 " value 3") step 4)
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  ] step4(assoc-in step3 [:key2 ] :another-key3 " value 3") step4)
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  ] step4(assoc-in step3 [:key2 :another-key3 ] " value 3") step4)
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  step4(assoc-in step3 [:key2 :another-key3 ] " value 3") step4)]
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  step4(assoc-in step3 [:key2 :another-key3 ] " value 3") ]step4)
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  step4(assoc-in step3 [:key2 :another-key3 ] " value 3") step5(assoc-in step4 [:key2 :another-key3] "changed value" ) ]step5)
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  step4(assoc-in step3 [:key2 :another-key3 ] " value 3") step5(assoc-in step4 [:key2 :another-key3] "changed value" ) step6(update step5 [ :key2 ] dissoc:new-key ) ] step6)
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  step4(assoc-in step3 [:key2 :another-key3 ] " value 3") step5(assoc-in step4 [:key2 :another-key3] "changed value" ) step6(update step5 [ :key2 ] dissoc :new-key ) ] step6)
+(let [step1 {} step2(assoc step1 :key1 "first value") step3(assoc step2 :key2{:new-key " some value" :another-key "some other value"} )  step4(assoc-in step3 [:key2 :another-key3 ] " value 3") step5(assoc-in step4 [:key2 :another-key3] "changed value" ) step6(update-in step5 [ :key2 ] dissoc :new-key ) ] step6)
+(let [change1 {} change2(assoc change1 :Name1 "value")]change2)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] )]change3)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(assoc change3 :name3 conj "value3" )]change4)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(assoc change3 :name3 conj 8 )]change4)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )]change4)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value") ] change5)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) ] change6)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :four] 4 ) ] change7)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :four] 4 ) change8(update-in change7 [:new-key) conj "not- map" ] change7)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :four] 4 ) change8(update-in change7 [:new-key) conj "not- map") ] change8)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :four] 4 ) change8(update-in change7 [:new-key conj "not- map" ] change8)
+)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :four] 4 ) change8(update-in change7 [:new-key] conj "not- map" ] change8)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :four] 4 ) change8(update-in change7 [:new-key] conj "not- map") ] change8)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :four] 4 ) change8(update-in change7 [:new-key] conj 9) ] change8)
+(let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :four] 4 ) change8(assoc change7 [:new-key :another-key] [9 8 7]) ] change8)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) ] change6)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) ] change7)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3])change7(update-in change7 [:new-key :vect] conj 9) ] change8)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) ] change8)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in chapter8 [:new-key :vect] subvec 1) ] change9)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in chapter8[:new-key :vect] subvec 1) ] change9)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in change8[:new-key :vect] subvec 1) ] change9)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in change8[:new-key :vect] subvec 0 3) ] change9)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in change8[:new-key :vect] subvec 0 4) ] change9)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in change8[:new-key :vect] subvec 0 3) ] change9)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in change8[:new-key :vect] subvec 1)change10(update-in change9[:new-key :vect] subvec 0 3 ) ] change10)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in change8[:new-key :vect] subvec 1)change10(update-in change9[:new-key :vect] subvec 0 4 ) ] change10)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in change8[:new-key :vect] subvec 1)change10(update-in change9[:new-key :vect] subvec 0 2 ) ] change10)
+(-> {})
+(-> {} (assoc :key1 "value" )(assoc :key2 7)(assoc :key3{})
+))
+(-> {} (assoc :key1 "value" )(assoc :key2 7)(assoc :key3{:inner-key "some value" :inner-key2 " some-value2"}))
+(-> {} (assoc :key1 "value" )(assoc :key2 7)(assoc :key3{:inner-key "some value" :inner-key2 " some-value2"})(assoc-in [:key3 :new-inner-key] "new-value"))
+(-> {} (assoc :key1 "value" )(assoc :key2 7)(assoc :key3{:inner-key "some value" :inner-key2 " some-value2"})(assoc-in [:key3 :new-inner-key] "new-value")(assoc-in [:key3 :inner-key] "changed-value"))
+(-> {} (assoc :key1 "value" )(assoc :key2 7)(assoc :key3{:inner-key "some value" :inner-key2 " some-value2"})(assoc-in [:key3 :new-inner-key] "new-value")(assoc-in [:key3 :inner-key] "changed-value")(update-in [:key3] dissoc :inner-key))
+(-> {} (assoc :key1 "value")(assoc :key2 [])(update :key2 conj "data")(assoc :key3{:inner-key "inner-value" :inner-key2 "second-value"})(assoc-in [:key3 :new-key]"new value" ))
+(-> {} (assoc :key1 "value")(assoc :key2 [])(update :key2 conj "data")(assoc :key3{:inner-key "inner-value" :inner-key2 "second-value"})(assoc-in [:key3 :new-key]["new value" 8 0] ))
+(-> {} (assoc :key1 "value")(assoc :key2 [])(update :key2 conj "data")(assoc :key3{:inner-key "inner-value" :inner-key2 "second-value"})(assoc-in [:key3 :new-key]["new value" 8 0] ) (update-in [:key3 :new-key] conj 23))
+(-> {} (assoc :key1 "value")(assoc :key2 [])(update :key2 conj "data")(assoc :key3{:inner-key "inner-value" :inner-key2 "second-value"})(assoc-in [:key3 :new-key]["new value" 8 0] ) (update-in [:key3 :new-key] conj 23) (update-in [:key3 :new-key] subvec 1))
+(-> {} (assoc :key1 "value")(assoc :key2 [])(update :key2 conj "data")(assoc :key3{:inner-key "inner-value" :inner-key2 "second-value"})(assoc-in [:key3 :new-key]["new value" 8 0] ) (update-in [:key3 :new-key] conj 23) (update-in [:key3 :new-key] subvec 1) (update-in [:key3 :new-key] subvec 0 2))
+l
+(let [final {:key1 "value1 " :key2 " value2" }])
+(let [final {:key1 "value1 " :key2 " value2" }] final)
+(let [final {:key1 "value1 " :key2 " value2" } item []](update item conj final) )
+(let [final {:key1 "value1 " :key2 " value2" } item [](update item conj final)] item)
+(let [final {:key1 "value1 " :key2 " value2" } item []] item)
+(let [final {:key1 "value1 " :key2 " value2" } item [] (update item conj 3 )] item)
+(let [final {:key1 "value1 " :key2 " value2" } item []] (update item conj 3 ) item)
+(let [final {:key1 "value1 " :key2 " value2" } item [] (update item conj final)] item)
+(let [final {:key1 "value1 " :key2 " value2" } item [] (conj item final)] item)
+(let [final {:key1 "value1 " :key2 " value2" } item [] step1(conj item final)] item)
+(let [final {:key1 "value1 " :key2 " value2" } item [] step1(conj item final)] step1)
+ (let [change1 {} change2(assoc change1 :Name1 "value") change3(assoc change2 :name3 [] ) change4(update change3 :name3 conj "value3" )change5(assoc change4 :added-key "added value")change6( assoc change5 :new-key{:one 1 :two 2 :three 3}) change7(assoc-in change6 [:new-key :vect] [ 1 2 3]) change8(update-in change7 [:new-key :vect] conj 9) change9(update-in change8[:new-key :vect] subvec 1) ] change9)
+(let [final {:key1 "value1 " :key2 " value2" } item [] step1(conj item final)] item)
+(let [final {:key1 "value1 " :key2 " value2" } item [] ste1(conj item final)] item)
+(def m {:v [1 2 3]})
+m
+(or (:v m) [])
+(:v2 m)
+(or (:v2 m) [])
+[]
+(def db {:name "re-frame"})
+(def final {:identity "some name"
+            :country "some country"})
+(let [items []
+      step (conj items final)]
+  (assoc db :result step ))
+(def db2 (let [items []
+               step (conj items final)]
+           (assoc db :result step ))
+  )
+(get db2)
+(get @db2)
+(get db2 :item)
+(get db2 :result)
+(def db3 (or(:result db) [] )
+  )
+(def db3 (let [items []
+               step (conj items final)]
+           (assoc db :result step ))
+             ]7
+[8:16 pm, 02/09/2019] Swati: (def db3 (or(:result db) [] )
+  )
+[8:18 pm, 02/09/2019] Swati: (def db3 (let [new-result(or (:result db) [])
+               step (conj items final)]
+           (assoc db2 :result step ))
+  )
+(def db3 (let [new-result(or (:result db) [])
+               step (conj items final)]
+           (assoc db2 :result step ))
+  )
+(def db3 (let [items(or (:result db) [])
+               step (conj items final)]
+           (assoc db2 :result step ))
+  )
+             
+(get db3 :reult)
+(get db3 :result)
+[8:31 pm, 02/09/2019] ivan:   )
+[8:31 pm, 02/09/2019] ivan: let [items (get db :result)
+]
+ (conj nil final)
+(def vect[12 15 48 98 70])
+(for [vect])
+
+     [:ul
+          (for [last-submitted]
+           [:li "data:- " all-values])]
+     [:ul
+           [:li "data:- " vect])]
+     [:ul
+]
+(for [item items]
+     ^{:key item} [:li "Item " item])
+(for [item vect]
+     ^{:key item} [:li "Item " vect])
+cd..
