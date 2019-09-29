@@ -6,7 +6,7 @@
     [soda-ash.core :as sa]))
 
 (defn my-country
-  [final] [sa/FormInput{ :label "COUNTRY  "
+  [final] [sa/FormInput{:label "COUNTRY  "
                         :width "5"
                         :input  "text"
                         :value (get @final :country)
@@ -18,8 +18,7 @@
             :input-Placeholder "NAME"
             :width "5"
             :input "text"
-
-            :value     (get @final :identity)
+            :value (get @final :identity)
             :on-change #(swap! final assoc :identity (-> % .-target .-value))} ])
 
 (defn my-form
@@ -39,17 +38,19 @@
 
 
 (defn show-result
-[last-submitted country]
+[last-submitted ]
 
- [:div [:h3 "YOUR NAME :- " last-submitted  ]
-  [:h3  "YOUR COUNTRY:- " country]] )
+ [:div [:h3 "YOUR NAME :- " (get last-submitted :identity)  ]
+  [:h3  "YOUR COUNTRY:- "
+   (get last-submitted :country) ]] )
+
 
 (defn show-all-values
-[ all-values]
- [sa/List { :ordered "True" }
+ [all-values]
+ [sa/List {}
   (for [item all-values]
     ^{:key (str item)}
-    [:li [show-result (get item :identity) (get item :country)]]
+    [sa/ListItem {:active true} [show-result item]]
     ) ]
 
 )
@@ -65,10 +66,16 @@
     [:div
 
      [my-form]
-      [:h3 "RECENT DATA"  [show-result (get @last-submitted :identity) (get @last-submitted :country)   ]]
+      [:h3 "RECENT DATA" [show-result @last-submitted] ]
       [show-all-values @all-values  ]
 
 
      ]
 
     ))
+
+
+
+
+
+

@@ -363,3 +363,4 @@ m
 (for [item vect]
      ^{:key item} [:li "Item " vect])
 cd..
+lein figwheel
