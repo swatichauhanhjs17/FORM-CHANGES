@@ -47,10 +47,10 @@
 
 (defn show-all-values
  [all-values]
- [sa/List {}
+ [sa/ListSA {:ordered true}
   (for [item all-values]
     ^{:key (str item)}
-    [sa/ListItem {:active true} [show-result item]]
+    [sa/ListItem  {:active true} [sa/ListIcon {:className "marker"}] [show-result item]]
     ) ]
 
 )
@@ -66,7 +66,8 @@
     [:div
 
      [my-form]
-      [:h3 "RECENT DATA" [show-result @last-submitted] ]
+     [:div  [:h3 "RECENT DATA \n" [show-result @last-submitted] ]]
+
       [show-all-values @all-values  ]
 
 
