@@ -5,21 +5,31 @@
     [reagent.core :as r]
     [soda-ash.core :as sa]))
 
+
 (defn my-country
-  [final] [sa/FormInput{:label "COUNTRY  "
-                        :width "5"
-                        :input  "text"
-                        :value (get @final :country)
-                        :on-change #(swap! final assoc :country (-> % .-target .-value))} ] )
+  [final]  [sa/Grid {:centered       true
+                       :columns        2
+                       :container      true
+                       :vertical-align "middle"}
+            [sa/FormInput{:label "COUNTRY  "
+                          :width "5"
+                          :align "center"
+                          :input  "text"
+                          :value (get @final :country)
+                          :on-change #(swap! final assoc :country (-> % .-target .-value))} ] ] )
 
 (defn my-identity
-  [final] [sa/FormInput
-           { :label "NAME  "
-            :input-Placeholder "NAME"
-            :width "5"
-            :input "text"
-            :value (get @final :identity)
-            :on-change #(swap! final assoc :identity (-> % .-target .-value))} ])
+  [final] [sa/Grid {:centered       true
+                    :columns        1
+                    :container      true
+                    :vertical-align "middle"}
+           [sa/FormInput
+            { :label "NAME  "
+             :input-Placeholder "NAME"
+             :width "5"
+             :input "text"
+             :value (get @final :identity)
+             :on-change #(swap! final assoc :identity (-> % .-target .-value))} ]] )
 
 (defn my-form
   []
@@ -27,14 +37,18 @@
                        :country  " Country"})]
     (fn []
       [:div
-             [sa/Form {}
-              [:h3  [my-identity final]]
-              [:h3  [my-country final]]
+      [ sa/Grid {:centered       true
+                 :columns        2
+                 :container      true
+                 :vertical-align "middle"} [sa/Form {}
+                                            [:h3  [my-identity final]]
+                                            [:h3  [my-country final]]
 
-              [sa/Button {
-                          :circular true
-                          :on-click #(re-frame/dispatch [:submit @final])} " SUBMIT"] ]]
-)))
+                                            [sa/Button {
+                                                        :circular true
+                                                        :on-click #(re-frame/dispatch [:submit @final])} " SUBMIT"] ]]
+       ]
+            )))
 
 
 (defn show-result
@@ -47,11 +61,16 @@
 
 (defn show-all-values
  [all-values]
- [sa/ListSA {:ordered true}
-  (for [item all-values]
-    ^{:key (str item)}
-    [sa/ListItem  {:active true} [sa/ListIcon {:className "marker"}] [show-result item]]
-    ) ]
+  [sa/Grid {:centered       true
+            :columns        2
+            :container      true
+            :vertical-align "middle"}
+   [sa/ListSA {:ordered true}
+   (for [item all-values]
+     ^{:key (str item)}
+
+     [sa/ListItem  {:active true} [sa/ListIcon {:className "marker"}] [show-result item]]
+     ) ]]
 
 )
 
@@ -66,9 +85,13 @@
     [:div
 
      [my-form]
-     [:div  [:h3 "RECENT DATA \n" [show-result @last-submitted] ]]
+     [:div [sa/Grid {:centered       true
+                     :columns        2
+                     :container      true
+                     :vertical-align "middle"}[:h3 "RECENT DATA \n" [show-result @last-submitted]]]
 
-      [show-all-values @all-values  ]
+      [show-all-values @all-values  ]]
+
 
 
      ]
