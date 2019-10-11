@@ -34,7 +34,7 @@
   (let [final (r/atom {:identity "  NAME"
                        :country  " Country"})]
     (fn []
-      [:div
+      [sa/Segment {}
        [sa/Form {}
         [:h3  [my-identity final]]
         [:h3  [my-country final]]
@@ -46,9 +46,9 @@
       )))
 (defn show-result
   [last-submitted ]
-  [:div
-   [:h3 "YOUR NAME :- " (get last-submitted :identity)  ]
-   [:h3  "YOUR COUNTRY:- " (get last-submitted :country) ]] )
+  [sa/Segment {}
+   [sa/Item {} "YOUR NAME :- " (get last-submitted :identity)  ]
+   [  "YOUR COUNTRY:- " (get last-submitted :country) ]] )
 
 (defn show-all-values
   [all-values]
