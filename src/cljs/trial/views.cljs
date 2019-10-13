@@ -79,9 +79,19 @@
                    :divided true
                    :stackable true
                    :stretched true}
-       [sa/GridColumn { :stretched true }[my-form]]
-       [sa/GridColumn { :stretched true }[sa/ItemGroup {} [sa/ItemContent {} "RECENT DATA \n" [show-result @last-submitted]]]]
-       [sa/GridColumn { :stretched true }[show-all-values @all-values  ]]]
+       [sa/GridColumn { :stretched true } [sa/Segment {}[my-form] ]  ]]
+       [sa/GridRow {:columns      3
+                    :vertical-align "top"
+                    :divided true
+                    :stackable true
+                    :stretched true}
+        [sa/GridColumn { :stretched true }[sa/Segment {} [sa/ItemContent {} "RECENT DATA \n" [show-result @last-submitted]]]] ]
+    [sa/GridRow {:columns      3
+                 :vertical-align "top"
+                 :divided true
+                 :stackable true
+                 :stretched true} [sa/GridColumn { :stretched true } [sa/Segment {}[show-all-values @all-values  ]] ] ]
+
 
 
 
