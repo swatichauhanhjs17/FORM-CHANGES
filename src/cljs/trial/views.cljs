@@ -51,7 +51,8 @@
 
 (defn show-all-values
   [all-values]
-  [sa/ListSA {:ordered true}
+  [sa/ListSA {:ordered true
+              :style {:overflow "auto" :max-height "500px"}}
    (for [item all-values]
      ^{:key (str item)}
      [sa/ListItem  {:active true} [sa/ListIcon {:className "marker"}] [show-result item]]
