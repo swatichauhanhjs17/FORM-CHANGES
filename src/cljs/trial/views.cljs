@@ -10,7 +10,7 @@
 (defn my-country
   [final]
   [sa/FormInput{:label "COUNTRY  "
-                :width "5"
+
                 :align "center"
                 :input  "text"
                 :value (get @final :country)
@@ -21,8 +21,7 @@
   [final]
   [sa/FormInput
    { :label "NAME"
-    :input-Placeholder "NAME"
-    :width "5"
+
     :input "text"
     :value (get @final :identity)
     :on-change #(swap! final assoc :identity (-> % .-target .-value))} ] )
@@ -34,10 +33,10 @@
   (let [final (r/atom {:identity "  NAME"
                        :country  " Country"})]
     (fn []
-      [sa/Segment {}
+      [sa/Item{}
        [sa/Form {}
-        [:h3  [my-identity final]]
-        [:h3  [my-country final]]
+        [sa/ItemHeader {} [my-identity final]]
+        [sa/ItemHeader {} [my-country final]]
 
         [sa/Button {
                     :circular true
@@ -46,9 +45,9 @@
       )))
 (defn show-result
   [last-submitted ]
-  [sa/Segment {}
+  [sa/Item {}
    [sa/Item {} "YOUR NAME :- " (get last-submitted :identity)  ]
-   [  "YOUR COUNTRY:- " (get last-submitted :country) ]] )
+   [ sa/Item {} "YOUR COUNTRY:- " (get last-submitted :country) ]] )
 
 (defn show-all-values
   [all-values]
@@ -73,14 +72,14 @@
      [sa/Grid {
                :columns        3
 
-               :vertical-align "middle"}
+               :vertical-align "top"}
       [sa/GridRow {:columns      3
-                   :vertical-align "middle"
+                   :vertical-align "top"
                    :divided true
                    :stackable true
                    :stretched true}
        [sa/GridColumn { :stretched true }[my-form]]
-       [sa/GridColumn { :stretched true }[:div[:h3 "RECENT DATA \n" [show-result @last-submitted]]]]
+       [sa/GridColumn { :stretched true }[sa/ItemGroup {} [sa/ItemContent {} "RECENT DATA \n" [show-result @last-submitted]]]]
        [sa/GridColumn { :stretched true }[show-all-values @all-values  ]]]
 
 
@@ -89,8 +88,6 @@
        ]
 
      ))
- ]
-
 
 
 
