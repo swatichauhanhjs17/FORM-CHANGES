@@ -46,16 +46,17 @@
 (defn show-result
   [last-submitted ]
   [sa/Item {}
-   [sa/Item {} "YOUR NAME :- " (get last-submitted :identity)  ]
-   [ sa/Item {} "YOUR COUNTRY:- " (get last-submitted :country) ]] )
+   [sa/ItemHeader {} "YOUR NAME :- " (get last-submitted :identity)  ]
+   [ sa/ItemContent {} "YOUR COUNTRY:- " (get last-submitted :country) ]] )
 
 (defn show-all-values
   [all-values]
-  [sa/ListSA {:ordered true
+  [sa/ItemGroup {:ordered true
+                 :divided true
               :style {:overflow "auto" :max-height "500px"}}
    (for [item all-values]
-     ^{:key (str item)}
-     [sa/ListItem  {:active true} [sa/ListIcon {:className "marker"}] [show-result item]]
+     ^{:key (str item)}[show-result item]
+
      ) ]
   )
 
@@ -71,22 +72,22 @@
 
 
      [sa/Grid {
-               :columns        3
+               :columns        2
 
                :vertical-align "top"}
-      [sa/GridRow {:columns      3
+      [sa/GridRow {:columns      2
                    :vertical-align "top"
                    :divided true
                    :stackable true
                    :stretched true}
        [sa/GridColumn { :stretched true } [sa/Segment {}[my-form] ]  ]]
-       [sa/GridRow {:columns      3
+       [sa/GridRow {:columns      4
                     :vertical-align "top"
                     :divided true
                     :stackable true
                     :stretched true}
-        [sa/GridColumn { :stretched true }[sa/Segment {} [sa/ItemContent {} "RECENT DATA \n" [show-result @last-submitted]]]] ]
-    [sa/GridRow {:columns      3
+        [sa/GridColumn { :stretched true }[sa/Segment {} [sa/ItemHeader{} "RECENT DATA \n" [show-result @last-submitted]]]] ]
+    [sa/GridRow {:columns      2
                  :vertical-align "top"
                  :divided true
                  :stackable true
