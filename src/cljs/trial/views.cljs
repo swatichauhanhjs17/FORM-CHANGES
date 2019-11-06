@@ -3,35 +3,50 @@
     [re-frame.core :as re-frame]
     [trial.subs :as subs]
     [reagent.core :as r]
-    [soda-ash.core :as sa]))
+    [soda-ash.core :as sa]
+    [form-validator.core :as form-validator]))
 
 
 
 (defn my-country
-  [final]
-  [sa/FormInput {:label     "COUNTRY  "
-
-                 :align     "center"
-                 :input     "text"
-                 :value     (get @final :country)
-                 :on-change #(swap! final assoc :country (-> % .-target .-value))}])
+  [final error]
+  [sa/FormField {:error error}
+   [:label "COUNTRY"]
+   [:input {:type "text"
+            :placeholder "COUNTRY"
+            :value     (get @final :country)
+            :on-change #(swap! final assoc :country (-> % .-target .-value))}]
+   (when error
+     [sa/Label {:basic true
+                :color "red"
+                :pointing true} error])])
 
 
 (defn my-identity
   [final error]
-  [sa/FormInput
-   {:label     "NAME"
-     :error   "error here"
-    :input     "text"
-    :value     (get @final :identity)
-    :on-change #(swap! final assoc :identity (-> % .-target .-value))}])
+  [sa/FormFeild {:error error1}
+   [:label     "NAME"]
+   [    :input  {:type "text"
+                 :value     (get @final :identity)
+                 :on-change #(swap! final assoc :identity (-> % .-target .-value)) }   ]])
+
+(defn my-sub
+  [final]
+
+  [sa/FormFeild {:label " SCIENCE"
+                 :control "input"
+                 :type "checkbox"}]
+
+  [sa/FormFeild {:label " ARTS"
+                 :control "input"
+                 :type "checkbox"}]
+  )
 
 (defn my-number
   [final error]
   [sa/FormInput
    {:label     "NUMBER"
     :input     "number"
-    :error     "error 1"
     :value     (get @final :number)
     :on-change #(swap! final assoc :number (-> % .-target .-value))}])
 
@@ -68,7 +83,7 @@
     (fn []
       [sa/Form {}
        [my-identity final error]
-       [my-country final error]
+       [my-country final (:error2 @error)]
        [my-number final]
        [my-email final]
        [today-date final]
@@ -134,5 +149,3 @@
      ]
 
     ))
-
-
