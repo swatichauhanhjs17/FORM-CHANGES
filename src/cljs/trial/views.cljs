@@ -18,8 +18,13 @@
             :on-change #(swap! final assoc :country (-> % .-target .-value))}]
    (when error
      [sa/Label {:basic true
+<<<<<<< HEAD
                 :color "red"
                 :pointing true} error])])
+=======
+              :color "red"
+              :pointing true} error])])
+>>>>>>> 4707ba859c661b300ee2851e493d516d13a887e1
 
 
 (defn my-identity
