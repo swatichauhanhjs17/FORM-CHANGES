@@ -18,31 +18,26 @@
             :on-change #(swap! final assoc :country (-> % .-target .-value))}]
    (when error
      [sa/Label {:basic true
-<<<<<<< HEAD
                 :color "red"
                 :pointing true} error])])
-=======
-              :color "red"
-              :pointing true} error])])
->>>>>>> 4707ba859c661b300ee2851e493d516d13a887e1
 
 
 (defn my-identity
   [final error]
-  [sa/FormFeild {:error error1}
+  [sa/FormField {:error error}
    [:label     "NAME"]
-   [    :input  {:type "text"
+   [:input  {:type "text"
                  :value     (get @final :identity)
                  :on-change #(swap! final assoc :identity (-> % .-target .-value)) }   ]])
 
 (defn my-sub
   [final]
 
-  [sa/FormFeild {:label " SCIENCE"
+  [sa/FormField {:label " SCIENCE"
                  :control "input"
                  :type "checkbox"}]
 
-  [sa/FormFeild {:label " ARTS"
+  [sa/FormField {:label " ARTS"
                  :control "input"
                  :type "checkbox"}]
   )
@@ -87,7 +82,7 @@
                        :error2 "ENTER YOUR COUNTRY HERE"})]
     (fn []
       [sa/Form {}
-       [my-identity final error]
+       [my-identity final (:error1 @error)]
        [my-country final (:error2 @error)]
        [my-number final]
        [my-email final]

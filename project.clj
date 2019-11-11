@@ -3,16 +3,14 @@
                  [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]
                  [re-frame "0.10.6"]
-                 [reagent "0.8.1"]
                  [soda-ash "0.83.0"]
+                 [kwladyka/form-validator-cljs "1.2.1"]
                    ]
 
-  {:deps {github-kwladyka/form-validator {:git/url "https://github.com/kwladyka/form-validator-cljs" :sha "0fec75c9046bff3b5c5f37a0bd7f821c1e8edbe0"}}}
-
-
-  :plugins [[lein-tools-deps "0.4.5"]]
-  :plugins [[lein-cljsbuild "1.1.7"]]
+  :plugins [[lein-tools-deps "0.4.5"]
+            [lein-cljsbuild "1.1.7"]]
   :middleware [lein-tools-deps.plugin/resolve-dependencies-with-deps-edn]
+  :lein-tools-deps/config {:config-files [:install :user :project]}
   :min-lein-version "2.5.3"
 
   :source-paths ["src/clj" "src/cljs"]
