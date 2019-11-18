@@ -1,0 +1,9 @@
+
+{:deps
+ {org.clojure/clojure {:mvn/version "1.10.1"}
+  org.clojure/clojurescript {:mvn/version "1.10.520"}
+  reagent {:mvn/version "0.8.1"}
+  re-frame {:mvn/version "0.10.6"}
+  soda-ash {:mvn/version "0.83.0"}
+  github-kwladyka/form-validator {:git/url "https://github.com/kwladyka/form-validator-cljs" :sha "0fec75c9046bff3b5c5f37a0bd7f821c1e8edbe0"}
+  }}
