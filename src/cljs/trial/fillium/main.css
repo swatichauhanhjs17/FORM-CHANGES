@@ -1,0 +1,12 @@
+.main-pic{
+  top:0px;
+  left:0px;
+  background-image: url('meet.jpg');
+  
+  background-repeat: no-repeat;
+  width=device-width;
+  height:802px;
+  background-size:cover;
+  background-position: fixed;
+
+}

@@ -7,10 +7,7 @@
                  [kwladyka/form-validator-cljs "1.2.1"]
                  ]
 
-  :plugins [[lein-tools-deps "0.4.5"]
-            [lein-cljsbuild "1.1.7"]]
-  :middleware [lein-tools-deps.plugin/resolve-dependencies-with-deps-edn]
-  :lein-tools-deps/config {:config-files [:install :user :project]}
+  :plugins [lein-cljsbuild "1.1.7"]
   :min-lein-version "2.5.3"
 
   :source-paths ["src/clj" "src/cljs"]

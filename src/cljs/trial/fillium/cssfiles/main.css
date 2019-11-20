@@ -1,0 +1,64 @@
+.main-pic{
+  top:0px;
+  left:0px;
+  background-image: url('meet.jpg');
+  
+  background-repeat: no-repeat;
+  width=device-width;
+  height:802px;
+  background-size:cover;
+  background-attachment: fixed;
+  background-position: fixed;
+  position: relative;
+
+
+}
+
+.second-pic{
+  top:0px;
+  left:0px;
+  background-image: url('cat.jpg');
+  
+  background-repeat: no-repeat;
+  width=device-width;
+  height:802px;
+  background-size:cover;
+  background-attachment: fixed;
+  background-position: fixed;
+  position: relative;
+
+
+}
+.final-pic{
+  top:0px;
+  left:0px;
+  background-image: url('final.jpg');
+  
+  background-repeat: no-repeat;
+  width=device-width;
+  height:802px;
+  background-size:cover;
+  background-attachment: fixed;
+  background-position: fixed;
+  position: relative;
+
+
+}
+.bck-pic{
+  top:0px;
+  left:0px;
+  background-image: url('bck.jpg');
+  
+  background-repeat: no-repeat;
+  width=device-width;
+  height:802px;
+  background-size:cover;
+  background-attachment: fixed;
+  background-position: fixed;
+  position: relative;
+
+
+}
+.txt
+{ text-align:right;
+}

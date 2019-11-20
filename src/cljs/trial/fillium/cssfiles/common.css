@@ -1,0 +1,25 @@
+.comm ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+ text-align:right;
+  overflow: hidden;
+  background-color: lightgray;
+ 
+}
+
+ul li{
+  display: inline;
+}
+.comm li a{
+  
+  color: black;
+ 
+  padding: 24px;
+  text-decoration: none;
+}
+.comm {
+  background-color: lightgrey;
+  height: 10%;
+ 
+}
