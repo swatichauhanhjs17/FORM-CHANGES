@@ -7,7 +7,7 @@
                  [kwladyka/form-validator-cljs "1.2.1"]
                  ]
 
-  :plugins [lein-cljsbuild "1.1.7"]
+  :plugins [[lein-cljsbuild "1.1.7"]]
   :min-lein-version "2.5.3"
 
   :source-paths ["src/clj" "src/cljs"]
