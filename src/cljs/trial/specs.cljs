@@ -1,6 +1,6 @@
 
-(ns specs.view
-  :require [clojure.spec.alpha :as s] )
+(ns trial.specs
+  (:require [clojure.spec.alpha :as s] ) )
 (s/valid? ::defn my-form "FORM-SUBMITTED")
 (s/def ::identity string?)
 

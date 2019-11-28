@@ -125,7 +125,10 @@
             )]
       )
 
-
+(defn form-msg []
+  (let [spec->msg {::sc/email "Typo? It doesn't look valid."}]
+    )
+  form-conf {{:email ""}})
 
 (defn main-panel []
       (let [name (re-frame/subscribe [::subs/name])
@@ -147,6 +150,6 @@
             [sa/GridRow {}
              [sa/GridColumn {} [sa/Segment {} [show-all-values @all-values]]]]
 
-            ]
+          [form-msg]  ]
 
            ))
