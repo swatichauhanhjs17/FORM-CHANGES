@@ -3,6 +3,7 @@
     [re-frame.core :as re-frame]
     [trial.subs :as subs]
     [reagent.core :as r]
+    [trial.specs :as sc ]
     [soda-ash.core :as sa]
     [form-validator.core :as form-validator]
     [clojure.spec.alpha :as s]))
@@ -79,14 +80,14 @@
                            :email "abc@gmail.com"
                            :date "01/12/19"
                            })
-            error (r/atom {:error1 "ENTER THE NAME HERE"
+            error (r/atom {:error1 "ENTER THE email HERE"
                            :error2 "ENTER YOUR COUNTRY HERE"})]
            (fn []
                [sa/Form {}
-                [my-identity final (:error1 @error)]
+                [my-identity final ]
                 [my-country final (:error2 @error)]
                 [my-number final]
-                [my-email final]
+                [my-email final (:error1 @error)]
                 [today-date final]
                 [sa/Button {
                             :circular true
@@ -126,9 +127,11 @@
       )
 
 (defn form-msg []
-  (let [spec->msg {::sc/email "Typo? It doesn't look valid."}]
+  (let [spec->msg {::sc/email "Typo? It doesn't look valid."}
+        form-conf {{:email ""} :form-spec ::sc/form}
+        form (fv/init-form form-conf)]
     )
-  form-conf {{:email ""}})
+  )
 
 (defn main-panel []
       (let [name (re-frame/subscribe [::subs/name])

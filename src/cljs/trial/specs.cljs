@@ -1,8 +1,8 @@
 
 (ns trial.specs
   (:require [clojure.spec.alpha :as s] ) )
-(s/valid? ::defn my-form "FORM-SUBMITTED")
-(s/def ::identity string?)
 
 
-(s/def ::email ::email-type)
+(s/def ::email (s/and string? (partial re-matches #"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$")))
+
+(s/def ::form (s/keys :req-un [::email ]))
