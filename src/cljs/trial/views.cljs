@@ -54,12 +54,14 @@
 
 
 (defn my-email
-      [final]
+      [final error form]
       [sa/FormInput
        {:label     "Email"
         :input     "text"
         :value     (get @final :email)
-        :on-change #(swap! final assoc :email(-> % .-target .-value))}])
+        :on-change #(do
+                      (swap! final assoc :email(-> % .-target .-value))
+                      (form-validator/events->names->values! form %))}])
 
 
 (defn today-date
@@ -68,7 +70,7 @@
        {:label     "DOB"
         :input     "date"
         :value     (get @final :date)
-        :on-change #(swap! final assoc :date(-> % .-target .-value))}])
+        :on-change # (swap! final assoc :date(-> % .-target .-value))}])
 
 
 
@@ -81,17 +83,23 @@
                            :date "01/12/19"
                            })
             error (r/atom {:error1 "ENTER THE email HERE"
-                           :error2 "ENTER YOUR COUNTRY HERE"})]
+                           :error2 "ENTER YOUR COUNTRY HERE"})
+            spec->msg {::sc/email "Typo? It doesn't look valid."}
+            form-conf {{:email ""} :form-spec ::sc/form}
+            form (fv/init-form form-conf)
+            ]
            (fn []
                [sa/Form {}
                 [my-identity final ]
                 [my-country final (:error2 @error)]
                 [my-number final]
-                [my-email final (:error1 @error)]
+                [my-email final (:error1 @error) form]
                 [today-date final]
                 [sa/Button {
                             :circular true
-                            :on-click #(re-frame/dispatch [:submit @final])} " SUBMIT"]
+                            :on-click #(if (form-validator/form-valid? form)
+                                         (re-frame/dispatch [:submit @final])
+                                         (swap! error assoc :error1 (form-validator/?show-meassage form :email spec-msg))) } " SUBMIT"]
                 ]
                )))
 (defn show-result
@@ -126,12 +134,6 @@
             )]
       )
 
-(defn form-msg []
-  (let [spec->msg {::sc/email "Typo? It doesn't look valid."}
-        form-conf {{:email ""} :form-spec ::sc/form}
-        form (fv/init-form form-conf)]
-    )
-  )
 
 (defn main-panel []
       (let [name (re-frame/subscribe [::subs/name])
