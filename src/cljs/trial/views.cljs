@@ -54,14 +54,20 @@
 
 
 (defn my-email
-      [final error form]
-      [sa/FormInput
-       {:label     "Email"
-        :input     "text"
-        :value     (get @final :email)
-        :on-change #(do
-                      (swap! final assoc :email(-> % .-target .-value))
-                      (form-validator/events->names->values! form %))}])
+  [final error form]
+  [sa/FormField {:error error}
+   [:label "Email"]
+   [:input {:type "text"
+            :name :email
+            :placeholder "Email"
+            :value     (get @final :email)
+            :on-change #(do
+                          (swap! final assoc :email (-> % .-target .-value))
+                          (form-validator/event->names->value! form %))}]
+   (when error
+     [sa/Label {:basic true
+                :color "red"
+                :pointing true} error])])
 
 
 (defn today-date
@@ -70,7 +76,7 @@
        {:label     "DOB"
         :input     "date"
         :value     (get @final :date)
-        :on-change # (swap! final assoc :date(-> % .-target .-value))}])
+        :on-change #(swap! final assoc :date (-> % .-target .-value))}])
 
 
 
@@ -85,8 +91,8 @@
             error (r/atom {:error1 "ENTER THE email HERE"
                            :error2 "ENTER YOUR COUNTRY HERE"})
             spec->msg {::sc/email "Typo? It doesn't look valid."}
-            form-conf {{:email ""} :form-spec ::sc/form}
-            form (fv/init-form form-conf)
+            form-conf {:names->value {:email "abc@gmail.com"} :form-spec ::sc/form}
+            form (form-validator/init-form form-conf)
             ]
            (fn []
                [sa/Form {}
@@ -99,7 +105,7 @@
                             :circular true
                             :on-click #(if (form-validator/form-valid? form)
                                          (re-frame/dispatch [:submit @final])
-                                         (swap! error assoc :error1 (form-validator/?show-meassage form :email spec-msg))) } " SUBMIT"]
+                                         (swap! error assoc :error1 (form-validator/get-message form :email spec->msg))) } " SUBMIT"]
                 ]
                )))
 (defn show-result
@@ -153,8 +159,6 @@
 
                                                [show-result @last-submitted]]]]]
             [sa/GridRow {}
-             [sa/GridColumn {} [sa/Segment {} [show-all-values @all-values]]]]
-
-          [form-msg]  ]
+             [sa/GridColumn {} [sa/Segment {} [show-all-values @all-values]]]]]
 
            ))
