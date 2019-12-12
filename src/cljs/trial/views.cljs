@@ -95,33 +95,33 @@
 
 
 (defn my-form
-  []
-  (let [final (r/atom {:identity "  NAME"
-                       :country  " Country"
-                       :number "9876543210"
-                       :email "abc@gmail.com"
-                       :date "01/12/19"
-                       })
-        error (r/atom {:error1 "ENTER THE email HERE"
-                       :error2 "ENTER YOUR COUNTRY HERE"})
-        spec->msg {::sc/email "Typo? It doesn't look valid."}
-        form-conf {:names->value {:email "abc@gmail.com"} :form-spec ::sc/form}
-        form (form-validator/init-form form-conf)
-        ]
-    (fn []
-      [sa/Form {}
-       [my-identity final ]
-       [my-country final (:error2 @error)]
-       [my-number final]
-       [my-email final (:error1 @error)]
-       [today-date final]
-       [sa/Button {
-                   :circular true
-                   :on-click #(if (s/valid? ::sc/form @final)
-                                (re-frame/dispatch [:submit @final])
-                                (swap! error assoc :error1 (get-invalid-fields  :email spec->msg))) } " SUBMIT"]
-       ]
-      )))
+      []
+      (let [final (r/atom {:identity "  NAME"
+                           :country  " Country"
+                           :number "9876543210"
+                           :email "abc@gmail.com"
+                           :date "01/12/19"
+                           })
+            error (r/atom {:error1 "ENTER THE email HERE"
+                           :error2 "ENTER YOUR COUNTRY HERE"})
+            spec->msg {::sc/email "Typo? It doesn't look valid."}
+            form-conf {:names->value {:email "abc@gmail.com"} :form-spec ::sc/form}
+            form (form-validator/init-form form-conf)
+            ]
+           (fn []
+               [sa/Form {}
+                [my-identity final ]
+                [my-country final (:error2 @error)]
+                [my-number final]
+                [my-email final (:error1 @error) form]
+                [today-date final]
+                [sa/Button {
+                            :circular true
+                            :on-click #(if (form-validator/form-valid? form)
+                                         (re-frame/dispatch [:submit @final])
+                                         (swap! error assoc :error1 (form-validator/get-message form :email spec->msg))) } " SUBMIT"]
+                ]
+               )))
 (defn show-result
   [last-submitted]
   [sa/Item {}
