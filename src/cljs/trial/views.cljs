@@ -3,7 +3,7 @@
     [re-frame.core :as re-frame]
     [trial.subs :as subs]
     [reagent.core :as r]
-    [trial.specs :as sc ]
+    [trial.specs :as sc]
     [soda-ash.core :as sa]
     [form-validator.core :as form-validator]
     [clojure.spec.alpha :as s]))
@@ -14,59 +14,73 @@
   [final error]
   [sa/FormField {:error error}
    [:label "COUNTRY"]
-   [:input {:type "text"
+   [:input {:type        "text"
             :placeholder "COUNTRY"
-            :value     (get @final :country)
-            :on-change #(swap! final assoc :country (-> % .-target .-value))}]
+            :value       (get @final :country)
+            :on-change   #(swap! final assoc :country (-> % .-target .-value))}]
    (when error
-     [sa/Label {:basic true
-                :color "red"
+     [sa/Label {:basic    true
+                :color    "red"
                 :pointing true} error])])
 
 
 (defn my-identity
   [final error]
   [sa/FormField {:error error}
-   [:label     "NAME"]
-   [:input  {:type "text"
-             :value     (get @final :identity)
-             :on-change #(swap! final assoc :identity (-> % .-target .-value)) }   ]])
+   [:label "NAME"]
+   [:input {:type      "text"
+            :name        :identity
+            :placeholder "NAME"
+            :value     (get @final :identity)
+            :on-change #(swap! final assoc :identity (-> % .-target .-value))}]
+   (when error
+     [sa/Label {:basic    true
+                :color    "red"
+                :pointing true} error])])
 
 (defn my-sub
   [final]
 
-  [sa/FormField {:label " SCIENCE"
+  [sa/FormField {:label   " SCIENCE"
                  :control "input"
-                 :type "checkbox"}]
+                 :type    "checkbox"}]
 
-  [sa/FormField {:label " ARTS"
+  [sa/FormField {:label   " ARTS"
                  :control "input"
-                 :type "checkbox"}]
+                 :type    "checkbox"}]
   )
 
 (defn my-number
   [final error]
-  [sa/FormInput
-   {:label     "NUMBER"
-    :input     "number"
-    :value     (get @final :number)
-    :on-change #(swap! final assoc :number (-> % .-target .-value))}])
+  [sa/FormInput {:error error}
+   [:label  "NUMBER"]
+   [:input {:type "number"
+            :placeholder "NUMBER"
+            :name :number
+            :value     (get @final :number)
+            :on-change #(swap! final assoc :number (-> % .-target .-value))}]
+
+   (when error
+     [sa/Label {:basic    true
+                :color    "red"
+                :pointing true} error])])
+
 
 
 (defn my-email
   [final error form]
   [sa/FormField {:error error}
    [:label "Email"]
-   [:input {:type "text"
-            :name :email
+   [:input {:type        "text"
+            :name        :email
             :placeholder "Email"
-            :value     (get @final :email)
-            :on-change #(do
-                          (swap! final assoc :email (-> % .-target .-value))
-                          (form-validator/event->names->value! form %))}]
+            :value       (get @final :email)
+            :on-change   #(do
+                            (swap! final assoc :email (-> % .-target .-value))
+                            (form-validator/event->names->value! form %))}]
    (when error
-     [sa/Label {:basic true
-                :color "red"
+     [sa/Label {:basic    true
+                :color    "red"
                 :pointing true} error])])
 
 
@@ -79,49 +93,42 @@
     :value     (get @final :date)
     :on-change #(swap! final assoc :date (-> % .-target .-value))}])
 
-(defn get-invalid-fields [spec form-value]
-  (  let[problems (->s/explain-data  spec form-value):cljs.spec.alpha/problems]
-
-    (get-invalid-fields ::sc/form {:email "correct@example.com" :name 123})
-     '(:name)
-
-    (get-invalid-fields ::sc/form {:email "incorrect@example" :name "some name"})
-    '(:email)
-
-    (get-invalid-fields ::sc/form {:email "incorrect@example" :name 123})
-    '(:name :email)
-    )
-)
-
 
 (defn my-form
-      []
-      (let [final (r/atom {:identity "  NAME"
-                           :country  " Country"
-                           :number "9876543210"
-                           :email "abc@gmail.com"
-                           :date "01/12/19"
-                           })
-            error (r/atom {:error1 "ENTER THE email HERE"
-                           :error2 "ENTER YOUR COUNTRY HERE"})
-            spec->msg {::sc/email "Typo? It doesn't look valid."}
-            form-conf {:names->value {:email "abc@gmail.com"} :form-spec ::sc/form}
-            form (form-validator/init-form form-conf)
-            ]
-           (fn []
-               [sa/Form {}
-                [my-identity final ]
-                [my-country final (:error2 @error)]
-                [my-number final]
-                [my-email final (:error1 @error) form]
-                [today-date final]
-                [sa/Button {
-                            :circular true
-                            :on-click #(if (form-validator/form-valid? form)
-                                         (re-frame/dispatch [:submit @final])
-                                         (swap! error assoc :error1 (form-validator/get-message form :email spec->msg))) } " SUBMIT"]
-                ]
-               )))
+  []
+  (let [final (r/atom {:identity "  NAME"
+                       :country  " Country"
+                       :number   "9876543210"
+                       :email    "abc@gmail.com"
+                       :date     "01/12/19"
+                       })
+        error (r/atom {:error1 "ENTER THE EMAIL HERE"
+                       :error2 "ENTER YOUR COUNTRY HERE"
+                       :error3 " ENTER NAME"
+                       :error4 "ENTER  NO."})
+        spec->msg {::sc/email "Typo? It doesn't look valid."
+                   ::sc/identity "ONLY STRINGS ALLOWED"
+                   ::sc/number "can not exceed 10 digits"}
+        form-conf {:names->value {:email "abc@gmail.com"} :form-spec ::sc/form}
+        form (form-validator/init-form form-conf)
+        ]
+    (fn []
+      [sa/Form {}
+       [my-identity final (:error3 @error) form]
+       [my-country final (:error2 @error)form]
+       [my-number final (:error4 @error) form]
+       [my-email final (:error1 @error) form]
+       [today-date final]
+
+
+       [sa/Button {
+                   :circular true
+                   :on-click #(if (form-validator/form-valid? form)
+                                (re-frame/dispatch [:submit @final])
+                                (swap! error assoc :error1 (form-validator/get-message form :email spec->msg)))} " SUBMIT"]
+       ]
+      )))
+
 (defn show-result
   [last-submitted]
   [sa/Item {}
