@@ -17,7 +17,10 @@
    [:input {:type        "text"
             :placeholder "COUNTRY"
             :value       (get @final :country)
-            :on-change   #(swap! final assoc :country (-> % .-target .-value))}]
+            :on-change  #(do
+                           (swap! final assoc :country (-> % .-target .-value))
+                            (form-validator/event->names->value! form %))
+            }]
    (when error
      [sa/Label {:basic    true
                 :color    "red"
@@ -32,7 +35,9 @@
             :name        :identity
             :placeholder "NAME"
             :value     (get @final :identity)
-            :on-change #(swap! final assoc :identity (-> % .-target .-value))}]
+            :on-change #(do(swap! final assoc :identity (-> % .-target .-value))
+                           (form-validator/event->names->value! form %))
+                           }]
    (when error
      [sa/Label {:basic    true
                 :color    "red"
@@ -52,13 +57,15 @@
 
 (defn my-number
   [final error]
-  [sa/FormInput {:error error}
+  [sa/FormField{:error error}
    [:label  "NUMBER"]
    [:input {:type "number"
             :placeholder "NUMBER"
             :name :number
             :value     (get @final :number)
-            :on-change #(swap! final assoc :number (-> % .-target .-value))}]
+            :on-change #(do (swap! final assoc :number (-> % .-target .-value))
+                            (form-validator/event->names->value! form %) )
+                      }]
 
    (when error
      [sa/Label {:basic    true
@@ -109,7 +116,7 @@
         spec->msg {::sc/email "Typo? It doesn't look valid."
                    ::sc/identity "ONLY STRINGS ALLOWED"
                    ::sc/number "can not exceed 10 digits"}
-        form-conf {:names->value {:email "abc@gmail.com"} :form-spec ::sc/form}
+        form-conf {:names->value {:email "abc@gmail.com" :identity "  NAME"    :country  " Country" :number   "9876543210" } :form-spec ::sc/form}
         form (form-validator/init-form form-conf)
         ]
     (fn []
@@ -123,7 +130,7 @@
 
        [sa/Button {
                    :circular true
-                   :on-click #(if (form-validator/form-valid? form)
+                   :on-click #(if (s/valid? :spec/form @final)
                                 (re-frame/dispatch [:submit @final])
                                 (swap! error assoc :error1 (form-validator/get-message form :email spec->msg)))} " SUBMIT"]
        ]
