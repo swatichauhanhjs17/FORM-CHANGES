@@ -130,9 +130,9 @@
 
        [sa/Button {
                    :circular true
-                   :on-click #(if (s/valid? :spec/form @final)
+                   :on-click #(if (s/valid? ::sc/form @final)
                                 (re-frame/dispatch [:submit @final])
-                                (swap! error assoc :error1 (form-validator/get-message form :email spec->msg)))} " SUBMIT"]
+                                (js/console.log (s/explain-data ::sc/form @final)))} " SUBMIT"]
        ]
       )))
 
