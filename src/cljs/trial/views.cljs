@@ -11,7 +11,7 @@
 
 
 (defn my-country
-  [final error]
+  [final error form]
   [sa/FormField {:error error}
    [:label "COUNTRY"]
    [:input {:type        "text"
@@ -28,7 +28,7 @@
 
 
 (defn my-identity
-  [final error]
+  [final error form]
   [sa/FormField {:error error}
    [:label "NAME"]
    [:input {:type      "text"
@@ -56,7 +56,7 @@
   )
 
 (defn my-number
-  [final error]
+  [final error form]
   [sa/FormField{:error error}
    [:label  "NUMBER"]
    [:input {:type "number"
